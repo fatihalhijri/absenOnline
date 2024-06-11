@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "787455740387",
+    "project_id": "absenonline-dbbb9",
+    "storage_bucket": "absenonline-dbbb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787455740387:android:923be4c4983dd25b3278d6",
+        "android_client_info": {
+          "package_name": "absenonline.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbFpFAb2JGSo2dsrmKxpzQJ9YWBgLQZr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787455740387:android:f820b652fe5909233278d6",
+        "android_client_info": {
+          "package_name": "absenonline.com.absenonline"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbFpFAb2JGSo2dsrmKxpzQJ9YWBgLQZr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
