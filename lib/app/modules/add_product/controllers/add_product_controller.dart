@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides, empty_catches, prefer_const_constructors, unused_import, unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_overrides, empty_catches, prefer_const_constructors, unused_import, unnecessary_brace_in_string_interps, avoid_web_libraries_in_flutter
 
 import 'dart:html';
 import 'dart:io';

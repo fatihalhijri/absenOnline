@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unused_field
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,15 +15,16 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     user.bindStream(_auth.authStateChanges());
-    ever(user, handleAuthChanged);
+    // ever(user, handleAuthChanged);
   }
 
-  void handleAuthChanged(User? user) async {
-    if (user != null) {
-      DocumentSnapshot userDoc = await _firestore.collection('users').doc(user.uid).get();
-      userName.value = userDoc['name'];
-    }
-  }
+  // void handleAuthChanged(User? user) async {
+  //   if (user != null) {
+  //     DocumentSnapshot userDoc =
+  //         await _firestore.collection('users').doc(user.uid).get();
+  //     userName.value = userDoc['name'];
+  //   }
+  // }
 
   void absenMasuk() {
     print('Absen Masuk');
@@ -70,4 +71,3 @@ class RectangleController extends GetxController {
     update();
   }
 }
- 

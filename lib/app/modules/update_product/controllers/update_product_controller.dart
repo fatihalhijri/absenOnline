@@ -1,6 +1,5 @@
 // ignore_for_file: unnecessary_overrides, prefer_const_constructors, empty_catches, unused_import
 
-import 'dart:html';
 
 import 'package:absenonline/app/modules/product/model/productModel.dart';
 import 'package:absenonline/app/routes/app_pages.dart';

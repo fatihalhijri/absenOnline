@@ -22,6 +22,8 @@ import '../modules/otp/bindings/otp_binding.dart';
 import '../modules/otp/views/otp_view.dart';
 import '../modules/product/bindings/product_binding.dart';
 import '../modules/product/views/product_view.dart';
+import '../modules/qr-scanner/bindings/qr_scanner_binding.dart';
+import '../modules/qr-scanner/views/qr_scanner_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -116,5 +118,11 @@ class AppPages {
       page: () => const EditAbsenView(),
       binding: EditAbsenBinding(),
     ),
+    GetPage(
+      name: _Paths.QR_SCANNER,
+      page: () => const QrScannerView(),
+      binding: QrScannerBinding(),
+    ),
+    
   ];
 }

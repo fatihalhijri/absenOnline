@@ -1,8 +1,7 @@
-// ignore_for_file: unnecessary_overrides
-
 import 'package:get/get.dart';
 
-class HomemainController extends GetxController {
+class QrScannerController extends GetxController {
+  //TODO: Implement QrScannerController
 
   final count = 0.obs;
   @override

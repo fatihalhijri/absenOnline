@@ -1,7 +1,8 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:get/get.dart';
 
 class OtpController extends GetxController {
-  //TODO: Implement OtpController
 
   final count = 0.obs;
   @override

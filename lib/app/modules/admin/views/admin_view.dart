@@ -6,6 +6,7 @@ import 'package:absenonline/app/modules/admin/model/admin.model.dart';
 import 'package:absenonline/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class AdminView extends GetView<AdminController> {
@@ -235,7 +236,10 @@ class AdminView extends GetView<AdminController> {
                         //   ),
                         // )
                         child: Container(
+                          height: 100,
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
                                 'No: $nomer',
@@ -245,17 +249,46 @@ class AdminView extends GetView<AdminController> {
                                   color: Colors.grey[800],
                                 ),
                               ),
-                              Text(
-                                '${dt.nama}',
-                                style: TextStyle(fontSize: 16),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Nama :  ${dt.nama}',
+                                    style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.grey[800]),
+                                  ),
+                                  Text(
+                                    'Kelas :  ${dt.kelas}',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  Text(
+                                    'Status : ${dt.status}',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'masuk :  ${dt.masuk}',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  Text(
+                                    'pulang :  ${dt.pulang}',
+                                    style: TextStyle(fontSize: 16),
+                                  )
+                                ],
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  // IconButton(
-                                  //   icon: Icon(Icons.qr_code),
-                                  //   onPressed: () => controller.showQRCode(schedule),
-                                  // ),
+                                  IconButton(
+                                    icon: Icon(Icons.qr_code),
+                                    // onPressed: () => controller.showQRCode(schedule),
+                                    onPressed: (){},
+                                  ),
                                   IconButton(
                                     icon: Icon(Icons.edit),
                                     onPressed: () =>
@@ -269,10 +302,12 @@ class AdminView extends GetView<AdminController> {
                       );
                     }),
               )
-            : CircularProgressIndicator(
-                color: Colors.blue,
-                // size: 50.0,
-              ),
+            : Center(
+              child: SpinKitWave(
+              color: Colors.blue,
+              size: 50.0,
+            ),
+            ),
       ),
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
