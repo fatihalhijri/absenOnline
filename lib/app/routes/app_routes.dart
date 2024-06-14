@@ -23,6 +23,8 @@ abstract class Routes {
   static const EDIT_ABSEN = _Paths.EDIT_ABSEN;
   static const QR_SCANNER = _Paths.QR_SCANNER;
   static const JADWAL = _Paths.JADWAL;
+  // static const JADWAL = _Paths.JADWAL;
+  static const ADD_JADWAL = _Paths.ADD_JADWAL;
 }
 
 abstract class _Paths {
@@ -45,4 +47,6 @@ abstract class _Paths {
   static const EDIT_ABSEN = '/edit-absen';
   static const QR_SCANNER = '/qr-scanner';
   static const JADWAL = '/jadwal';
+  // static const JADWAL = '/jadwal';
+  static const ADD_JADWAL = '/add-jadwal';
 }

@@ -443,42 +443,49 @@ class _HomeViewState extends State<HomeView> {
                     'Absen Keluar',
                     Icons.logout,
                     controller.absenKeluar,
+                    Routes.ADMIN
                   ),
                   _buildMenuButton(
                     context,
                     'Mulai Istirahat',
                     Icons.free_breakfast,
                     controller.mulaiIstirahat,
+                    Routes.ADMIN
                   ),
                   _buildMenuButton(
                     context,
                     'Selesai Istirahat',
                     Icons.alarm_off,
                     controller.selesaiIstirahat,
+                    Routes.ADMIN
                   ),
                   _buildMenuButton(
                     context,
-                    'Mulai Lembur',
+                    'Lihat Jadwal',
                     Icons.work,
                     controller.mulaiLembur,
+                    Routes.JADWAL
                   ),
                   _buildMenuButton(
                     context,
                     'Selesai Lembur',
                     Icons.work_off,
                     controller.selesaiLembur,
+                    Routes.ADMIN
                   ),
                   _buildMenuButton(
                     context,
                     'Riwayat Absensi',
                     Icons.history,
                     _showHistoryDialog,
+                    Routes.ADMIN
                   ),
                   _buildMenuButton(
                     context,
                     'Pengaturan',
                     Icons.settings,
                     _showSettingsDialog,
+                    Routes.ADMIN
                   ),
                 ],
               ),
@@ -536,10 +543,10 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _buildMenuButton(
-      BuildContext context, String title, IconData icon, Function onTap) {
+      BuildContext context, String title, IconData icon, Function onTap, var router) {
     return GestureDetector(
       onTap: () {
-        Get.offAllNamed(Routes.ADMIN);
+        Get.offAllNamed(router);
         // _showFeatureDialog(
         //     context, title, 'Anda telah mengklik tombol $title.');
       },

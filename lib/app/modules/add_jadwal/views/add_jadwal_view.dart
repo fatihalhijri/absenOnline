@@ -1,17 +1,17 @@
 // ignore_for_file: prefer_const_constructors, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
-import 'package:absenonline/app/modules/add_absen/controllers/add_absen_controller.dart';
+import 'package:absenonline/app/modules/add_jadwal/controllers/add_jadwal_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class AddAbsenView extends GetView<AddAbsenController> {
-  const AddAbsenView({Key? key}) : super(key: key);
+class AddJadwalView extends GetView<AddJadwalController> {
+  const AddJadwalView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('AddAbsenView'),
+          title: const Text('AddJadwalView'),
           centerTitle: true,
         ),
         body: Padding(
@@ -30,13 +30,13 @@ class AddAbsenView extends GetView<AddAbsenController> {
                 // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Nama Anda',
+                  Text('Nama Product',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
                   TextField(
-                    controller: controller.nama,
+                    controller: controller.hari,
                     decoration: InputDecoration(
-                        hintText: 'Ketikan Nama  Anda',
+                        hintText: 'Ketikan Nama Product Anda',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -57,13 +57,13 @@ class AddAbsenView extends GetView<AddAbsenController> {
 
                 children: [
                   Text(
-                    'Masukan Kelas anda',
+                    'harga',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
                   TextField(
-                    controller: controller.kelas,
+                    controller: controller.hari,
                     decoration: InputDecoration(
-                        hintText: 'Kelas',
+                        hintText: 'Ketikan harga ',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -74,16 +74,18 @@ class AddAbsenView extends GetView<AddAbsenController> {
                 ],
               ),
               Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   Text(
-                    'Status',
+                    'stok',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
                   TextField(
-                    controller: controller.status,
+                    controller: controller.jamKeluar,
                     decoration: InputDecoration(
-                        hintText: 'Hadir / Belum Hadir',
+                        hintText: 'Ketikan stok Anda',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -94,16 +96,18 @@ class AddAbsenView extends GetView<AddAbsenController> {
                 ],
               ),
               Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   Text(
-                    'Masuk',
+                    'jenis',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
                   TextField(
-                    controller: controller.masuk,
+                    controller: controller.jamMasuk,
                     decoration: InputDecoration(
-                        hintText: 'Jam Masuk',
+                        hintText: 'Ketikan jenis Anda',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -114,16 +118,18 @@ class AddAbsenView extends GetView<AddAbsenController> {
                 ],
               ),
               Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   Text(
-                    'Keluar',
+                    'jenis',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
                   TextField(
-                    controller: controller.pulang,
+                    controller: controller.kehadiran,
                     decoration: InputDecoration(
-                        hintText: 'Jam keluar',
+                        hintText: 'Ketikan jenis Anda',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -136,9 +142,18 @@ class AddAbsenView extends GetView<AddAbsenController> {
               SizedBox(
                 height: 20,
               ),
+              // Obx(() => Text(controller.url.value),),
+              // Container(
+              //   width: MediaQuery.of(context).size.width,
+              //   margin: EdgeInsets.symmetric(vertical: 20),
+              //   child: ElevatedButton(
+              //     onPressed: ()=>controller.uploadFoto(),
+              //     child: Text('upload File'),
+              //   ),
+              // ),
               ElevatedButton(
                   onPressed: () {
-                    controller.saveProduct();
+                    controller.saveJadwal();
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
@@ -146,12 +161,8 @@ class AddAbsenView extends GetView<AddAbsenController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Save Absen"),
-                      Icon(
-                        Icons.add,
-                        size: 20,
-                        color: Colors.white,
-                      )
+                      Text("Save Product"),
+                      Icon(Icons.add,size: 20, color: Colors.white,)
                     ],
                   ))
             ],

@@ -4,6 +4,8 @@ import '../modules/absen/bindings/absen_binding.dart';
 import '../modules/absen/views/absen_view.dart';
 import '../modules/add_absen/bindings/add_absen_binding.dart';
 import '../modules/add_absen/views/add_absen_view.dart';
+import '../modules/add_jadwal/bindings/add_jadwal_binding.dart';
+import '../modules/add_jadwal/views/add_jadwal_view.dart';
 import '../modules/add_product/bindings/add_product_binding.dart';
 import '../modules/add_product/views/add_product_view.dart';
 import '../modules/admin/bindings/admin_binding.dart';
@@ -14,6 +16,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homemain/bindings/homemain_binding.dart';
 import '../modules/homemain/views/homemain_view.dart';
+import '../modules/jadwal/bindings/jadwal_binding.dart';
+import '../modules/jadwal/views/jadwal_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/lupapass/bindings/lupapass_binding.dart';
@@ -123,6 +127,15 @@ class AppPages {
       page: () => const QrScannerView(),
       binding: QrScannerBinding(),
     ),
-    
+    GetPage(
+      name: _Paths.JADWAL,
+      page: () => const JadwalView(),
+      binding: JadwalBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_JADWAL,
+      page: () => const AddJadwalView(),
+      binding: AddJadwalBinding(),
+    ),
   ];
 }

@@ -35,24 +35,31 @@ class AdminController extends GetxController {
   }
 
   getAbsen() async {
-    try {
+    // try {
       status.value = false;
       final absen = await fs.collection("absen").get();
 
-      print(absen);
+      
 
-      if (absen.docs.isNotEmpty) {
-        absen.docs.map((e) {
-          AbsenModel absenList = AbsenModel.fromJson(
-            Map.from(e.data()),e.id, //e.id
-          );
-          data.add(absenList);
-        }).toList();
-        status.value = true;
+      try {
+        if (absen.docs.isNotEmpty) {
+          absen.docs.map((e) {
+            AbsenModel absenList = AbsenModel.fromJson(
+              Map.from(e.data()),e.id, //e.id
+            );
+            data.add(absenList);
+          }).toList();
+          status.value = true;
+        }
+      } catch (e) {
+        print('-------------------------- ${e}');
       }
-    } catch (e) {
-      print('err ${e}');
-    }
+      print('dasdsadasda ${status.value}');
+      print('dasdasdadae12312 $data');
+      print('dsdsa123457564321 $absen');
+    // } catch (e) {
+      // print('err ${e}');
+    // }
   }
 
   delete(String id) async {
