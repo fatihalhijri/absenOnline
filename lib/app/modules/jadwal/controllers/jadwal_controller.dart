@@ -1,8 +1,9 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_overrides
+
 import 'package:absenonline/app/modules/jadwal/model/jadwal.dart';
 import 'package:absenonline/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
 class JadwalController extends GetxController {
@@ -10,6 +11,7 @@ class JadwalController extends GetxController {
   RxBool status = false.obs;
   List<Jadwal> data = [];
 
+  
   getJadwal() async {
     final jadwal = await firestore.collection("jadwal").get();
     try {
@@ -22,6 +24,20 @@ class JadwalController extends GetxController {
       }
     } catch (e) {
       print('dfgsdcaevudgqywe34r5t6y6u ${e}');
+    }
+  }
+
+  deleteProduct(String id) async {
+    try {
+      await firestore.collection('jadwal').doc(id).delete();
+      Get.showSnackbar(GetSnackBar(
+        title: 'Berhasil',
+        message: 'Berhasil Menghapus',
+        duration: Duration(seconds: 2),
+      ));
+      Get.offAllNamed(Routes.JADWAL);
+    } catch (e) {
+      Get.defaultDialog(middleText: 'Gagal Menghapus Product');
     }
   }
 

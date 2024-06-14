@@ -34,6 +34,8 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/telepon/bindings/telepon_binding.dart';
 import '../modules/telepon/views/telepon_view.dart';
+import '../modules/update_jadwal/bindings/update_jadwal_binding.dart';
+import '../modules/update_jadwal/views/update_jadwal_view.dart';
 import '../modules/update_product/bindings/update_product_binding.dart';
 import '../modules/update_product/views/update_product_view.dart';
 
@@ -124,7 +126,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QR_SCANNER,
-      page: () => const QrScannerView(),
+      page: () =>  QrScannerView(),
       binding: QrScannerBinding(),
     ),
     GetPage(
@@ -136,6 +138,11 @@ class AppPages {
       name: _Paths.ADD_JADWAL,
       page: () => const AddJadwalView(),
       binding: AddJadwalBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_JADWAL,
+      page: () =>  UpdateJadwalView(),
+      binding: UpdateJadwalBinding(),
     ),
   ];
 }

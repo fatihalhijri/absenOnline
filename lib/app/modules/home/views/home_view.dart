@@ -438,12 +438,28 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ),
-                  _buildMenuButton(
-                    context,
-                    'Absen Keluar',
-                    Icons.logout,
-                    controller.absenKeluar,
-                    Routes.ADMIN
+                  GestureDetector(
+                    onTap: () {
+                      Get.offAllNamed(Routes.JADWAL);
+                    },
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.login, size: 48, color: Colors.green),
+                          SizedBox(height: 8),
+                          Text(
+                            'Absen Sekarang',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   _buildMenuButton(
                     context,

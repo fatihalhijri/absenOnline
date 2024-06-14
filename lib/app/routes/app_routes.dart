@@ -25,6 +25,7 @@ abstract class Routes {
   static const JADWAL = _Paths.JADWAL;
   // static const JADWAL = _Paths.JADWAL;
   static const ADD_JADWAL = _Paths.ADD_JADWAL;
+  static const UPDATE_JADWAL = _Paths.UPDATE_JADWAL;
 }
 
 abstract class _Paths {
@@ -49,4 +50,5 @@ abstract class _Paths {
   static const JADWAL = '/jadwal';
   // static const JADWAL = '/jadwal';
   static const ADD_JADWAL = '/add-jadwal';
+  static const UPDATE_JADWAL = '/update-jadwal';
 }

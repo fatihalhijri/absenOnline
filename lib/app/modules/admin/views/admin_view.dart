@@ -1,12 +1,10 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unnecessary_string_interpolations
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unnecessary_string_interpolations, avoid_print, sized_box_for_whitespace
 
 import 'package:absenonline/app/controllers/auth_controller.dart';
 import 'package:absenonline/app/modules/admin/controllers/admin_controller.dart';
 import 'package:absenonline/app/modules/admin/model/admin.model.dart';
 import 'package:absenonline/app/routes/app_pages.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class AdminView extends GetView<AdminController> {
@@ -19,9 +17,8 @@ class AdminView extends GetView<AdminController> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         title: IconButton(
-          onPressed: () => Get.offAllNamed(Routes.HOME), 
-          icon: Icon(Icons.arrow_back)
-        ),
+            onPressed: () => Get.offAllNamed(Routes.HOME),
+            icon: Icon(Icons.arrow_back)),
         backgroundColor: Colors.indigo,
         actions: [
           IconButton(
@@ -151,9 +148,28 @@ class AdminView extends GetView<AdminController> {
                                     ),
                                     IconButton(
                                       icon: Icon(Icons.edit),
-                                      onPressed: () =>
-                                          Get.offAllNamed(Routes.EDIT_ABSEN, arguments: dt),
+                                      onPressed: () => Get.toNamed(
+                                          Routes.EDIT_ABSEN,
+                                          arguments: dt),
                                     ),
+                                    IconButton(
+                                        icon: Icon(Icons.delete),
+                                        onPressed: () {Get.defaultDialog(
+                                          title: 'Are you sure',
+                                          middleText: 'Delete This Product',
+                                          confirm: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Colors.red),
+                                              // onPressed: () => auth.logout(),
+                                              onPressed: () => controller
+                                                  .delete(dt.id),
+                                              child: Text('Yes',
+                                                  style: TextStyle(
+                                                      color: Colors.white))),
+                                          cancel: ElevatedButton(
+                                              onPressed: () => Get.back(),
+                                              child: Text('No')));
+                                        }),
                                   ],
                                 ),
                               ],

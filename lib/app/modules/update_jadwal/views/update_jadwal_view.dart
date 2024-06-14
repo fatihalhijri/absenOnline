@@ -1,21 +1,25 @@
-// ignore_for_file: prefer_const_constructors, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
-import 'package:absenonline/app/modules/add_jadwal/controllers/add_jadwal_controller.dart';
-import 'package:absenonline/app/routes/app_pages.dart';
+import 'package:absenonline/app/modules/jadwal/model/jadwal.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class AddJadwalView extends GetView<AddJadwalController> {
-  const AddJadwalView({Key? key}) : super(key: key);
+import '../controllers/update_jadwal_controller.dart';
+
+class UpdateJadwalView extends GetView<UpdateJadwalController> {
+   UpdateJadwalView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+   Jadwal data = Get.arguments;
+   controller.updateVariable(data);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Jadwal View'),
-          centerTitle: true,
-        ),
-        body: Padding(
+      appBar: AppBar(
+        title: const Text('UpdateJadwalView'),
+        centerTitle: true,
+      ),
+      body: Padding(
           padding: EdgeInsets.symmetric(vertical: 18, horizontal: 18),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -23,7 +27,7 @@ class AddJadwalView extends GetView<AddJadwalController> {
             children: [
               Center(
                 child: Text(
-                  'Buat Jadwal ',
+                  'Update Product',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -31,13 +35,13 @@ class AddJadwalView extends GetView<AddJadwalController> {
                 // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Nama Mata Pelajaran',
+                  Text('Mata Pelajaran',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
                   TextField(
                     controller: controller.mapel,
                     decoration: InputDecoration(
-                        hintText: 'Ketikan Mapel Anda',
+                        hintText: 'Ketikan Nama Product Anda',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -49,6 +53,53 @@ class AddJadwalView extends GetView<AddJadwalController> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                children: [
+                  Text(
+                    'hari',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
+                  TextField(
+                    controller: controller.hari,
+                    decoration: InputDecoration(
+                        hintText: 'Ketikan hari ',
+                        hintStyle: TextStyle(
+                            fontSize: 18, color: Colors.grey.shade400),
+                        border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(8))),
+                  ),
+                ],
+              ),
+              Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                children: [
+                  Text(
+                    'jamMasuk',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
+                  TextField(
+                    controller: controller.jamMasuk,
+                    decoration: InputDecoration(
+                        hintText: 'Ketikan jamMasuk Anda',
+                        hintStyle: TextStyle(
+                            fontSize: 18, color: Colors.grey.shade400),
+                        border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(8))),
+                  ),
+                ],
+              ),
               
               Column(
                 // mainAxisAlignment: MainAxisAlignment.start,
@@ -56,59 +107,13 @@ class AddJadwalView extends GetView<AddJadwalController> {
 
                 children: [
                   Text(
-                    'Hari',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                  TextField(
-                    controller: controller.hari,
-                    decoration: InputDecoration(
-                        hintText: 'Ketikan Hari ',
-                        hintStyle: TextStyle(
-                            fontSize: 18, color: Colors.grey.shade400),
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8))),
-                  ),
-                ],
-              ),
-              Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-                  Text(
-                    'jam Masuk',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                  TextField(
-                    controller: controller.jamMasuk,
-                    decoration: InputDecoration(
-                        hintText: 'Ketikan jam Masuk Anda',
-                        hintStyle: TextStyle(
-                            fontSize: 18, color: Colors.grey.shade400),
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8))),
-                  ),
-                ],
-              ),
-              Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-                  Text(
-                    'Jam Keluar',
+                    'jamKeluar',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
                   TextField(
                     controller: controller.jamKeluar,
                     decoration: InputDecoration(
-                        hintText: 'Ketikan Jam Keluar Anda',
-                        filled: true,
-                        fillColor: Colors.white,
+                        hintText: 'Ketikan jamKeluar Anda',
                         hintStyle: TextStyle(
                             fontSize: 18, color: Colors.grey.shade400),
                         border: OutlineInputBorder(
@@ -143,18 +148,9 @@ class AddJadwalView extends GetView<AddJadwalController> {
               SizedBox(
                 height: 20,
               ),
-              // Obx(() => Text(controller.url.value),),
-              // Container(
-              //   width: MediaQuery.of(context).size.width,
-              //   margin: EdgeInsets.symmetric(vertical: 20),
-              //   child: ElevatedButton(
-              //     onPressed: ()=>controller.uploadFoto(),
-              //     child: Text('upload File'),
-              //   ),
-              // ),
               ElevatedButton(
                   onPressed: () {
-                    controller.saveJadwal();
+                    controller.updateJadwal(data.id);
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
@@ -162,7 +158,7 @@ class AddJadwalView extends GetView<AddJadwalController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Save Jadwal"),
+                      Text("Save Product"),
                       Icon(
                         Icons.add,
                         size: 20,
@@ -173,5 +169,6 @@ class AddJadwalView extends GetView<AddJadwalController> {
             ],
           ),
         ));
+    
   }
 }

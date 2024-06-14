@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:absenonline/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,6 @@ class AddJadwalController extends GetxController {
       jamMasuk = new TextEditingController(),
       jamKeluar = new TextEditingController(),
       kehadiran = new TextEditingController();
-  //TODO: Implement JadwalController
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -40,23 +41,6 @@ class AddJadwalController extends GetxController {
       );
     }
   }
-  //TODO: Implement AddJadwalController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  
 }

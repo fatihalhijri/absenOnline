@@ -25,13 +25,7 @@ class UpdateProductController extends GetxController {
   }
 
   updateProduct(String id) async {
-    // DocumentReference product = firestore.collection("product").doc(data);
-    // final productData = {
-    //   "nama" :nama.text,
-    //   "harga":int.parse(harga.text),
-    //   "stok":int.parse(stok.text),
-    //   "jenis":jenis.text
-    // };
+   
     CollectionReference product = firestore.collection('product');
     final productData = {
       "nama": nama.text,
