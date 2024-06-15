@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'package:absenonline/app/modules/add_absen/controllers/add_absen_controller.dart';
+import 'package:absenonline/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,8 +12,11 @@ class AddAbsenView extends GetView<AddAbsenController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('AddAbsenView'),
-          centerTitle: true,
+          title: IconButton(
+            onPressed: () => Get.offAllNamed(Routes.ADMIN), 
+            icon: Icon(Icons.arrow_back)
+          ),
+          // centerTitle: true,
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(vertical: 18, horizontal: 18),
@@ -80,17 +84,36 @@ class AddAbsenView extends GetView<AddAbsenController> {
                     'Status',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
-                  TextField(
-                    controller: controller.status,
-                    decoration: InputDecoration(
-                        hintText: 'Hadir / Belum Hadir',
-                        hintStyle: TextStyle(
-                            fontSize: 18, color: Colors.grey.shade400),
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8))),
-                  ),
+                  // TextField(
+                  //   controller: controller.status.value,
+                  //   decoration: InputDecoration(
+                  //       hintText: 'Hadir / Belum Hadir',
+                  //       hintStyle: TextStyle(
+                  //           fontSize: 18, color: Colors.grey.shade400),
+                  //       border: OutlineInputBorder(
+                  //           borderSide:
+                  //               BorderSide(width: 1, color: Colors.grey),
+                  //           borderRadius: BorderRadius.circular(8))),
+                  // ),
+                  Row(
+                    children: [
+                      Text('Belum Hadir'),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Obx(() => Switch(
+                            value: controller.status.value,
+                            onChanged: (value) {
+                              controller.status.value = value;
+                              print(value);
+                            },
+                          )),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('Hadir')
+                    ],
+                  )
                 ],
               ),
               Column(

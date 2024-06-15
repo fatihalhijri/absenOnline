@@ -14,7 +14,7 @@ class AbsenModel {
   String kelas;
   String masuk;
   String pulang;
-  String status;
+  bool status;
   String id;
 
   AbsenModel({

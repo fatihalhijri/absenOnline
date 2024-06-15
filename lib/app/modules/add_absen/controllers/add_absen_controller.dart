@@ -10,9 +10,9 @@ import 'package:get/get.dart';
 class AddAbsenController extends GetxController {
   TextEditingController nama = TextEditingController();
   TextEditingController kelas = TextEditingController();
-  TextEditingController status = TextEditingController();
   TextEditingController masuk = TextEditingController();
   TextEditingController pulang = TextEditingController();
+  RxBool status = false.obs;
 
   RxBool loadingStatus = false.obs;
   List<Jadwal> data = [];
@@ -25,7 +25,7 @@ class AddAbsenController extends GetxController {
       //sini
       "nama": nama.text,
       "kelas": kelas.text,
-      "status": status.text,
+      "status": status.value,
       "masuk": masuk.text,
       "pulang": pulang.text,
       // "gambar": url.value

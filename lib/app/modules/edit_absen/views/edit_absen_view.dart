@@ -83,17 +83,25 @@ class EditAbsenView extends GetView<EditAbsenController> {
                     'Status',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   ),
-                  TextField(
-                    controller: controller.status,
-                    decoration: InputDecoration(
-                        hintText: 'Hadir / Belum Hadir',
-                        hintStyle: TextStyle(
-                            fontSize: 18, color: Colors.grey.shade400),
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8))),
-                  ),
+                  Row(
+                    children: [
+                      Text('Belum Hadir'),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Obx(() => Switch(
+                            value: controller.status.value,
+                            onChanged: (value) {
+                              controller.status.value = value;
+                              print(value);
+                            },
+                          )),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('Hadir')
+                    ],
+                  )
                 ],
               ),
               Column(

@@ -11,14 +11,14 @@ class EditAbsenController extends GetxController {
 
   TextEditingController nama = TextEditingController();
   TextEditingController kelas = TextEditingController();
-  TextEditingController status = TextEditingController();
   TextEditingController masuk = TextEditingController();
   TextEditingController pulang = TextEditingController();
+  RxBool status = false.obs;
 
   updateVar (AbsenModel data) async {
     nama.text = data.nama;
     kelas.text = data.kelas;
-    status.text = data.status;
+    status.value = status.value;
     masuk.text = data.masuk;
     pulang.text = data.pulang;
   }
@@ -29,7 +29,7 @@ class EditAbsenController extends GetxController {
     final absenData = {
       "nama": nama.text,
       "kelas": kelas.text,
-      "status": status.text,
+      "status": status.value,
       "masuk": masuk.text,
       "pulang": pulang.text,
     };

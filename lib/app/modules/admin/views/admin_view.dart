@@ -83,6 +83,8 @@ class AdminView extends GetView<AdminController> {
                         print(
                             '----------------------------------------------------------------');
                         print('dasdasd ${controller.data}');
+
+
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           elevation: 4.0,
@@ -119,7 +121,7 @@ class AdminView extends GetView<AdminController> {
                                       style: TextStyle(fontSize: 16),
                                     ),
                                     Text(
-                                      'Status : ${dt.status}',
+                                      'Status : ${dt.status ? "Hadir" : "Belum Hadir"}',
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ],
