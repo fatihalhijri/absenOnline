@@ -1,51 +1,17 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_overrides
-
-import 'package:absenonline/app/modules/jadwal/model/jadwal.dart';
-import 'package:absenonline/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
+import 'package:absenonline/app/modules/jadwal/model/jadwal.dart';
 
 class JadwalController extends GetxController {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  RxBool status = false.obs;
-  List<Jadwal> data = [];
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final RxBool status = false.obs;
+  final RxList<Jadwal> data = <Jadwal>[].obs;
+  final RxString searchQuery = ''.obs;
 
-  
-  getJadwal() async {
-    final jadwal = await firestore.collection("jadwal").get();
-    try {
-      if (jadwal.docs.isNotEmpty) {
-        jadwal.docs.map((e) {
-          Jadwal jadwalList = Jadwal.fromJson(Map.from(e.data()), e.id);
-          data.add(jadwalList);
-        }).toList();
-        status.value = true;
-      }
-    } catch (e) {
-      print('dfgsdcaevudgqywe34r5t6y6u ${e}');
-    }
-  }
-
-  deleteProduct(String id) async {
-    try {
-      await firestore.collection('jadwal').doc(id).delete();
-      Get.showSnackbar(GetSnackBar(
-        title: 'Berhasil',
-        message: 'Berhasil Menghapus',
-        duration: Duration(seconds: 2),
-      ));
-      Get.offAllNamed(Routes.JADWAL);
-    } catch (e) {
-      Get.defaultDialog(middleText: 'Gagal Menghapus Product');
-    }
-  }
-
-  final count = 0.obs;
   @override
   void onInit() {
-    getJadwal();
     super.onInit();
+    getJadwal();
   }
 
   @override
@@ -58,5 +24,62 @@ class JadwalController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  // Fungsi untuk mengambil data jadwal dari Firestore
+  Future<void> getJadwal() async {
+    try {
+      QuerySnapshot jadwalSnapshot = await firestore.collection("jadwal").get();
+      List<Jadwal> jadwalList = jadwalSnapshot.docs.map((e) {
+        return Jadwal.fromJson(e.data() as Map<String, dynamic>, e.id);
+      }).toList();
+      data.assignAll(jadwalList);
+      status.value = true;
+    } catch (e) {
+      print("Error getting data: $e");
+      status.value = false;
+    }
+  }
+
+  // Fungsi untuk menambahkan jadwal baru
+  Future<void> addJadwal(Jadwal jadwal) async {
+    try {
+      await firestore.collection("jadwal").add(jadwal.toJson());
+      await getJadwal(); // Refresh data setelah penambahan
+    } catch (e) {
+      print("Error adding data: $e");
+    }
+  }
+
+  // Fungsi untuk mengedit jadwal yang sudah ada
+  Future<void> editJadwal(Jadwal jadwal) async {
+    try {
+      await firestore.collection("jadwal").doc(jadwal.id).update(jadwal.toJson());
+      await getJadwal(); // Refresh data setelah update
+    } catch (e) {
+      print("Error updating data: $e");
+    }
+  }
+
+  // Fungsi untuk menghapus jadwal
+  Future<void> deleteJadwal(Jadwal jadwal) async {
+    try {
+      await firestore.collection("jadwal").doc(jadwal.id).delete();
+      await getJadwal(); // Refresh data setelah penghapusan
+    } catch (e) {
+      print("Error deleting data: $e");
+    }
+  }
+
+  // Fungsi untuk mencari jadwal berdasarkan query
+  List<Jadwal> searchJadwal(String query) {
+    return data.where((jadwal) {
+      return jadwal.mapel.toLowerCase().contains(query.toLowerCase()) ||
+             jadwal.hari.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+  }
+
+  // Fungsi untuk me-refresh data jadwal
+  Future<void> refreshData() async {
+    status.value = false;
+    await getJadwal();
+  }
 }
