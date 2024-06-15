@@ -84,7 +84,6 @@ class AdminView extends GetView<AdminController> {
                             '----------------------------------------------------------------');
                         print('dasdasd ${controller.data}');
 
-
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           elevation: 4.0,
@@ -156,21 +155,25 @@ class AdminView extends GetView<AdminController> {
                                     ),
                                     IconButton(
                                         icon: Icon(Icons.delete),
-                                        onPressed: () {Get.defaultDialog(
-                                          title: 'Are you sure',
-                                          middleText: 'Delete This Product',
-                                          confirm: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.red),
-                                              // onPressed: () => auth.logout(),
-                                              onPressed: () => controller
-                                                  .delete(dt.id),
-                                              child: Text('Yes',
-                                                  style: TextStyle(
-                                                      color: Colors.white))),
-                                          cancel: ElevatedButton(
-                                              onPressed: () => Get.back(),
-                                              child: Text('No')));
+                                        onPressed: () {
+                                          Get.defaultDialog(
+                                              title: 'Are you sure',
+                                              middleText: 'Delete This Product',
+                                              confirm: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Colors.red),
+                                                  // onPressed: () => auth.logout(),
+                                                  onPressed: () =>
+                                                      controller.delete(dt.id),
+                                                  child: Text('Yes',
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.white))),
+                                              cancel: ElevatedButton(
+                                                  onPressed: () => Get.back(),
+                                                  child: Text('No')));
                                         }),
                                   ],
                                 ),

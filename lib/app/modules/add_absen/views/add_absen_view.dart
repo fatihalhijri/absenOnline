@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print
 
 import 'package:absenonline/app/modules/add_absen/controllers/add_absen_controller.dart';
 import 'package:absenonline/app/routes/app_pages.dart';
@@ -26,7 +26,7 @@ class AddAbsenView extends GetView<AddAbsenController> {
             children: [
               Center(
                 child: Text(
-                  'Login',
+                  'Add Absen',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
               ),

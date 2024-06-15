@@ -173,7 +173,7 @@ class _HomeViewState extends State<HomeView> {
                             Text('Yes', style: TextStyle(color: Colors.white))),
                     cancel: ElevatedButton(
                         onPressed: () => Get.back(), child: Text('No')));
-                Get.offAllNamed('/login');
+                Get.offAllNamed(Routes.LOGIN);
               }
             },
             itemBuilder: (BuildContext context) {
@@ -462,47 +462,25 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   _buildMenuButton(
-                    context,
-                    'Mulai Istirahat',
-                    Icons.free_breakfast,
-                    controller.mulaiIstirahat,
-                    Routes.ADMIN
-                  ),
+                      context,
+                      'Mulai Istirahat',
+                      Icons.free_breakfast,
+                      controller.mulaiIstirahat,
+                      Routes.ADMIN),
                   _buildMenuButton(
-                    context,
-                    'Selesai Istirahat',
-                    Icons.alarm_off,
-                    controller.selesaiIstirahat,
-                    Routes.ADMIN
-                  ),
-                  _buildMenuButton(
-                    context,
-                    'Lihat Jadwal',
-                    Icons.work,
-                    controller.mulaiLembur,
-                    Routes.JADWAL
-                  ),
-                  _buildMenuButton(
-                    context,
-                    'Selesai Lembur',
-                    Icons.work_off,
-                    controller.selesaiLembur,
-                    Routes.ADMIN
-                  ),
-                  _buildMenuButton(
-                    context,
-                    'Riwayat Absensi',
-                    Icons.history,
-                    _showHistoryDialog,
-                    Routes.ADMIN
-                  ),
-                  _buildMenuButton(
-                    context,
-                    'Pengaturan',
-                    Icons.settings,
-                    _showSettingsDialog,
-                    Routes.ADMIN
-                  ),
+                      context,
+                      'Selesai Istirahat',
+                      Icons.alarm_off,
+                      controller.selesaiIstirahat,
+                      Routes.ADMIN),
+                  _buildMenuButton(context, 'Lihat Jadwal', Icons.work,
+                      controller.mulaiLembur, Routes.JADWAL),
+                  _buildMenuButton(context, 'Selesai Lembur', Icons.work_off,
+                      controller.selesaiLembur, Routes.ADMIN),
+                  _buildMenuButton(context, 'Riwayat Absensi', Icons.history,
+                      _showHistoryDialog, Routes.ADMIN),
+                  _buildMenuButton(context, 'Pengaturan', Icons.settings,
+                      _showSettingsDialog, Routes.ADMIN),
                 ],
               ),
               SizedBox(height: 32),
@@ -558,8 +536,8 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Widget _buildMenuButton(
-      BuildContext context, String title, IconData icon, Function onTap, var router) {
+  Widget _buildMenuButton(BuildContext context, String title, IconData icon,
+      Function onTap, var router) {
     return GestureDetector(
       onTap: () {
         Get.offAllNamed(router);
