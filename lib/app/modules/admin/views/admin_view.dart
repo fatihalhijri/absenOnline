@@ -146,7 +146,7 @@ class AdminView extends GetView<AdminController> {
                                     IconButton(
                                       icon: Icon(Icons.qr_code),
                                       // onPressed: () => controller.showQRCode(schedule),
-                                      onPressed: () {},
+                                      onPressed: () => Get.offAllNamed(Routes.QR_SCANNER, arguments: dt.id),
                                     ),
                                     IconButton(
                                       icon: Icon(Icons.edit),
