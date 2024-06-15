@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, unnecessary_brace_in_string_interps, prefer_typing_uninitialized_variables
 
 import 'package:absenonline/app/modules/admin/model/admin.model.dart';
+import 'package:absenonline/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -220,7 +221,7 @@ class AdminController extends GetxController {
   }
 
   void scanQRCode() async {
-    final scannedData = await Get.toNamed('/qr-scanner');
+    final scannedData = await Get.offAllNamed(Routes.QR_SCANNER);
     if (scannedData != null) {
       final scannedSchedule = schedules.firstWhere(
         (schedule) => schedule.id == scannedData,
