@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, must_be_immutable, avoid_print
 
 import 'package:absenonline/app/modules/admin/controllers/admin_controller.dart';
 import 'package:absenonline/app/modules/admin/model/admin.model.dart';
@@ -15,7 +15,7 @@ class QrScannerView extends GetView<QrScannerController> {
   CameraController _controller = CameraController(autoPlay: false);
 
   final rs = Get.put(AdminController());
-  AbsenModel dt = Get.arguments;
+  // AbsenModel dt = Get.arguments;
 
   // final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   // Barcode? result;
@@ -26,6 +26,8 @@ class QrScannerView extends GetView<QrScannerController> {
     // Jadwal data = Get.arguments;
     //   const data = Get.arguments;
     //  controller.updateVariable(data);
+    AbsenModel dt = Get.arguments;
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('HomeView'),
@@ -39,7 +41,8 @@ class QrScannerView extends GetView<QrScannerController> {
                 height: 300,  
                 margin: EdgeInsets.only(bottom: 20),
                 child: QrImageView(
-                  data: rs.data[0].id,
+                  // data: rs.data[0].id,
+                  data:dt.id,
                   version: QrVersions.auto,
                   size: 300,
                 )),
