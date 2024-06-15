@@ -12,6 +12,8 @@ import '../modules/admin/bindings/admin_binding.dart';
 import '../modules/admin/views/admin_view.dart';
 import '../modules/edit_absen/bindings/edit_absen_binding.dart';
 import '../modules/edit_absen/views/edit_absen_view.dart';
+import '../modules/forgot_password/bindings/forgot_password_binding.dart';
+import '../modules/forgot_password/views/forgot_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homemain/bindings/homemain_binding.dart';
@@ -38,6 +40,8 @@ import '../modules/update_jadwal/bindings/update_jadwal_binding.dart';
 import '../modules/update_jadwal/views/update_jadwal_view.dart';
 import '../modules/update_product/bindings/update_product_binding.dart';
 import '../modules/update_product/views/update_product_view.dart';
+import '../modules/user/bindings/user_binding.dart';
+import '../modules/user/views/user_view.dart';
 
 // ignore_for_file: prefer_const_constructors, constant_identifier_names
 
@@ -126,7 +130,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QR_SCANNER,
-      page: () =>  QrScannerView(),
+      page: () => QrScannerView(),
       binding: QrScannerBinding(),
     ),
     GetPage(
@@ -141,8 +145,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.UPDATE_JADWAL,
-      page: () =>  UpdateJadwalView(),
+      page: () => UpdateJadwalView(),
       binding: UpdateJadwalBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORGOT_PASSWORD,
+      page: () => ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER,
+      page: () => const UserView(),
+      binding: UserBinding(),
     ),
   ];
 }

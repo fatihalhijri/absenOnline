@@ -65,7 +65,9 @@
 //                   onSubmitted: (value) => auth.register(
 //                       controller.email.text,
 //                       controller.password.text,
-//                       controller.konfirmasiPassword.text),
+//                       controller.konfirmasiPassword.text,
+//                       roleler.konfirmasiPassword.text,
+// ),
 //                   decoration: InputDecoration(
 //                       hintText: 'Ketikan password Anda',
 //                       // suffixIcon:IconButton(onPressed: (){
@@ -97,7 +99,9 @@
 //                   onSubmitted: (value) => auth.register(
 //                       controller.email.text,
 //                       controller.password.text,
-//                       controller.konfirmasiPassword.text),
+//                       controller.konfirmasiPassword.text,
+//                       roleler.konfirmasiPassword.text,
+// ),
 //                   decoration: InputDecoration(
 //                       hintText: 'Ketikan password Anda',
 //                       // suffixIcon:IconButton(onPressed: (){
@@ -124,7 +128,9 @@
 //                     return auth.register(
 //                         controller.email.text,
 //                         controller.password.text,
-//                         controller.konfirmasiPassword.text);
+//                         controller.konfirmasiPassword.text,
+//                         roleoller.konfirmasiPassword.text,
+// );
 //                   },
 //                   child: Text('Register'),
 //                   style: ElevatedButton.styleFrom(
@@ -188,7 +194,7 @@ class RegisterView extends GetView<RegisterController> {
               ),
               SizedBox(height: 32),
               TextField(
-                controller: controller.nama,
+                controller: controller.name,
                 decoration: InputDecoration(
                   hintText: 'Nama',
                   filled: true,
@@ -221,10 +227,12 @@ class RegisterView extends GetView<RegisterController> {
                 controller: controller.password,
                 obscureText: _isObscure,
                 onSubmitted: (value) => auth.register(
-                      controller.nama.text,
+                      controller.name.text,
                       controller.email.text,
                       controller.password.text,
-                      controller.konfirmasiPassword.text),
+                      controller.konfirmasiPassword.text,
+                      controller.role.text,
+                      ),
                 decoration: InputDecoration(
                   hintText: 'Password',
                   filled: true,
@@ -243,12 +251,37 @@ class RegisterView extends GetView<RegisterController> {
                 controller: controller.konfirmasiPassword,
                 obscureText: _isObscure,
                 onSubmitted: (value) => auth.register(
-                      controller.nama.text,
+                      controller.name.text,
                       controller.email.text,
                       controller.password.text,
-                      controller.konfirmasiPassword.text),
+                      controller.konfirmasiPassword.text,
+                      controller.role.text,
+                      ),
                 decoration: InputDecoration(
                   hintText: 'Konfimasi Password',
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+                ),
+              ),
+              SizedBox(height: 16),
+              TextField(
+                controller: controller.role,
+                obscureText: _isObscure,
+                onSubmitted: (value) => auth.register(
+                      controller.name.text,
+                      controller.email.text,
+                      controller.password.text,
+                      controller.konfirmasiPassword.text,
+                      controller.role.text,
+                      ),
+                decoration: InputDecoration(
+                  hintText: 'Role anda',
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -265,10 +298,12 @@ class RegisterView extends GetView<RegisterController> {
                   // Get.defaultDialog();
 
                   return auth.register(
-                      controller.nama.text,
+                      controller.name.text,
                       controller.email.text,
                       controller.password.text,
-                      controller.konfirmasiPassword.text);
+                      controller.konfirmasiPassword.text,
+                      controller.role.text,
+                      );
                 },
                 height: 60,
                 width: double.infinity,

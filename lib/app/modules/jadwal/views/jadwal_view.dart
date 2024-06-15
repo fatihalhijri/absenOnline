@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, no_leading_underscores_for_local_identifiers
+
 import 'dart:js';
 
 import 'package:absenonline/app/modules/jadwal/controllers/jadwal_controller.dart';
@@ -17,9 +19,8 @@ class JadwalView extends GetView<JadwalController> {
       backgroundColor: Colors.indigo.shade50,
       appBar: AppBar(
         title: IconButton(
-          onPressed: () => Get.offAllNamed(Routes.HOME),
-          icon: Icon(Icons.arrow_back)
-        ),
+            onPressed: () => Get.offAllNamed(Routes.HOME),
+            icon: Icon(Icons.arrow_back)),
         backgroundColor: Colors.indigo,
       ),
       body: SafeArea(
@@ -92,7 +93,9 @@ class JadwalView extends GetView<JadwalController> {
 
   Widget _buildDataTable(JadwalController controller) {
     List<Jadwal> filteredData = controller.data.where((jadwal) {
-      return jadwal.mapel.toLowerCase().contains(controller.searchQuery.value.toLowerCase());
+      return jadwal.mapel
+          .toLowerCase()
+          .contains(controller.searchQuery.value.toLowerCase());
     }).toList();
 
     return Container(
@@ -105,13 +108,27 @@ class JadwalView extends GetView<JadwalController> {
         scrollDirection: Axis.horizontal,
         child: DataTable(
           columns: const [
-            DataColumn(label: Text('No', style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text('Hari', style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text('Mapel', style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text('Jam Masuk', style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text('Jam Keluar', style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text('Kehadiran', style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text('Aksi', style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label:
+                    Text('No', style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label: Text('Hari',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label: Text('Mapel',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label: Text('Jam Masuk',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label: Text('Jam Keluar',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label: Text('Kehadiran',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(
+                label: Text('Aksi',
+                    style: TextStyle(fontWeight: FontWeight.bold))),
           ],
           rows: List.generate(
             filteredData.length,
@@ -131,7 +148,8 @@ class JadwalView extends GetView<JadwalController> {
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.blue),
                           onPressed: () {
-                            _showAddEditDialog(context as BuildContext, jadwal: jadwal);
+                            _showAddEditDialog(context as BuildContext,
+                                jadwal: jadwal);
                           },
                         ),
                         IconButton(
@@ -305,7 +323,8 @@ class JadwalView extends GetView<JadwalController> {
                       mapel: mapel,
                       jamMasuk: jamMasuk,
                       jamKeluar: jamKeluar,
-                      kehadiran: kehadiran, id: '',
+                      kehadiran: kehadiran,
+                      id: '',
                     ));
                   } else {
                     Get.find<JadwalController>().editJadwal(Jadwal(

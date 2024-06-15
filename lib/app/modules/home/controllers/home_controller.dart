@@ -14,6 +14,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // fetchUserName();
     user.bindStream(_auth.authStateChanges());
     // ever(user, handleAuthChanged);
   }
@@ -26,6 +27,16 @@ class HomeController extends GetxController {
   //   }
   // }
 
+  // void fetchUserName() async {
+  //   User? user = FirebaseAuth.instance.currentUser;
+  //   if (user != null) {
+  //     DocumentSnapshot userDoc = await FirebaseFirestore.instance
+  //         .collection('users')
+  //         .doc(user.uid)
+  //         .get();
+  //     userName.value = userDoc['name'];
+  //   }
+  // }
   void absenMasuk() {
     print('Absen Masuk');
     // Logika untuk absen masuk

@@ -13,13 +13,18 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
   String codeOtp = "";
+  FirebaseAuth auth = FirebaseAuth.instance;
+  Rx<User?> firebaseUser = Rx<User?>(null);
+  RxString userRole = ''.obs;
+  RxString userName = ''.obs;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   
   RxBool status = false.obs;
 
   Stream authStatus = FirebaseAuth.instance.authStateChanges();
   final FirebaseFirestore fs = FirebaseFirestore.instance;
   List<UserModel> data = [];
-  register(String nama,String email, String password, String konfirmasiPassword) async {
+  register(String name,String email, String password, String konfirmasiPassword,String role) async {
     if (password != konfirmasiPassword) {
       Get.defaultDialog(
           title: 'Perhatian',
@@ -37,13 +42,19 @@ class AuthController extends GetxController {
         // konfirmasiPassword: konfirmasiPassword,
         
       );
+       User? user = credential.user;
       // Simpan nama pengguna ke Firestore
-      await fs.collection('users').doc(credential.user!.uid).set({
-        'name': nama,
+     if(user != null){
+      await user.updateDisplayName(name);
+       await fs.collection('users').doc(credential.user!.uid).set({
+        'uid': user.uid,
+        'name': name,
         'email': email,
+        'role':role,
         'dibuat_pada': Timestamp.now(),
       });
-      Get.offAllNamed(Routes.HOME);
+     }
+      Get.offAllNamed(Routes.LOGIN);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -56,6 +67,28 @@ class AuthController extends GetxController {
       Get.back();
     }
   }
+  //  register(String email, String password, String konfirmasiPassword,String name, String role) async {
+  //   try {
+  //     UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
+  //     User? user = userCredential.user;
+
+  //     if (user != null) {
+  //       await user.updateDisplayName(name);
+  //       await firestore.collection('users').doc(user.uid).set({
+  //         'uid': user.uid,
+  //         'email': email,
+  //         'name': name,
+  //         'role': role, // Add role here
+  //       });
+  //     }
+  //     Get.offAllNamed(Routes.LOGIN);
+  //   } catch (e) {
+  //     Get.snackbar('Error', e.toString());
+  //   }
+  // }
 
    getNama() async {
     try {
@@ -87,7 +120,21 @@ class AuthController extends GetxController {
         email: email,
         password: password,
       );
+      
+      User? user = credential.user;
       Get.offAllNamed(Routes.HOME);
+      if (user != null) {
+        DocumentSnapshot userDoc = await firestore.collection('users').doc(user.uid).get();
+        userRole.value = userDoc['role'];
+        userName.value = userDoc['name'];
+
+        if (userRole.value == 'admin') {
+          Get.offAllNamed(Routes.ADMIN);
+        } else {
+          Get.offAllNamed(Routes.USER);
+        }
+      }
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -98,6 +145,30 @@ class AuthController extends GetxController {
       print(e);
     }
   }
+  // void login(String email, String password) async {
+  //   try {
+  //     UserCredential userCredential = await auth.signInWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
+  //     User? user = userCredential.user;
+
+  //     if (user != null) {
+  //       DocumentSnapshot userDoc = await firestore.collection('users').doc(user.uid).get();
+  //       userRole.value = userDoc['role'];
+  //       userName.value = userDoc['name'];
+
+  //       if (userRole.value == 'admin') {
+  //         Get.offAllNamed(Routes.ADMIN);
+  //       } else {
+  //         Get.offAllNamed(Routes.USER);
+  //       }
+  //     }
+  //   } catch (e) {
+  //     Get.snackbar('Error', e.toString());
+  //   }
+  // }
+
 
   signInWithGoogle() async {
     try {
@@ -182,6 +253,14 @@ class AuthController extends GetxController {
       });
     } catch (e) {
       Get.defaultDialog(middleText: 'Code Otp salah');
+    }
+  }
+  void resetPassword(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+      Get.snackbar('Success', 'Password reset email sent');
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
     }
   }
 }

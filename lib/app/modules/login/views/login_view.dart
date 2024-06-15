@@ -231,6 +231,19 @@ class LoginView extends GetView<LoginController> {
                   return null;
                 },
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  
+                  TextButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.FORGOT_PASSWORD);
+                  },
+                  child: Text('Forgot Password?'),
+            ),
+                ],
+              ),
+              SizedBox(height: 16),
               SizedBox(height: 24),
               AnimatedButton(
                 onPress: () =>
@@ -272,7 +285,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              
               
               Container(
                 decoration: BoxDecoration(

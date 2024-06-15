@@ -41,14 +41,16 @@ class LupapassView extends GetView<LupapassController> {
               ),
               SizedBox(height: 20,),
               ElevatedButton(
-                onPressed: ()=>auth.resetpass(controller.email.text),
-                // onPressed: () =>
-                    // auth.login(controller.email.text, controller.password.text),
-                child: Text('Kirim Email'),
-                style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50),
-                    backgroundColor: Colors.blue),
-              ),
+              onPressed: () {
+                final email =  controller.email.text.trim();
+                if (email.isNotEmpty) {
+                  auth.resetpass(email);
+                } else {
+                  Get.snackbar('Error', 'Please enter your email', snackPosition: SnackPosition.BOTTOM);
+                }
+              },
+              child: Text('Reset Password'),
+            ),
             ],
           ),
       )
