@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_qrcode_scanner/flutter_web_qrcode_scanner.dart';
 
 import 'package:get/get.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+// import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../controllers/qr_scanner_controller.dart';
@@ -17,7 +17,8 @@ class QrScannerView extends GetView<QrScannerController> {
   CameraController _controller = CameraController(autoPlay: false);
 
   final rs = Get.put(AdminController());
-  AbsenModel dt = Get.arguments;
+  // AbsenModel dt = Get.arguments;
+  // var dt;
 
   // final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   // Barcode? result;
@@ -28,6 +29,10 @@ class QrScannerView extends GetView<QrScannerController> {
     // Jadwal data = Get.arguments;
     //   const data = Get.arguments;
     //  controller.updateVariable(data);
+    print('----------------------------');
+    print(Get.arguments);
+    print('----------------------------');
+    AbsenModel dt = Get.arguments;
     return Scaffold(
         appBar: AppBar(
           title: const Text('HomeView'),
@@ -41,7 +46,7 @@ class QrScannerView extends GetView<QrScannerController> {
                 height: 300,
                 margin: EdgeInsets.only(bottom: 20),
                 child: QrImageView(
-                  data: rs.data[0].id,
+                  data: dt.id,
                   version: QrVersions.auto,
                   size: 300,
                 )),
